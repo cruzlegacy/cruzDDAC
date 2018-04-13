@@ -1,0 +1,62 @@
+﻿
+
+@model cruzDDAC.Models.ModifyViewModel
+@{
+    ViewBag.Title = "Update Profile";
+}
+<link href="../../Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("UpdateProfile", "Manage", FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Change Profile Details</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Fullname)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Fullname, new { Value = ViewBag.fullname, @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Fullname)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Profile)
+        </div>
+        <div class="editor-field">
+            @*@Html.TextBoxFor(model => model.BirthDate, new { @type = "date", Value = ViewBag.datebirth, @class = "form-control" })*@
+            <input id="Event_Image" title="Upload event image" type="file" name="Event_Image" accept="image/*" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Change Profile" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Styles.Render("~/Content/cssjqryUi")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            dateFormat: "dd/M/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-60:+0"
+        });
+
+    });
+    </script>
+
+}  

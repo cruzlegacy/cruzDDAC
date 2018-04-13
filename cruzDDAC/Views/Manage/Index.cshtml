@@ -1,0 +1,138 @@
+﻿@model cruzDDAC.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+
+
+
+<section class="parallax-section" style="margin-top:-10px">
+
+    <div class="row">
+
+        <div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="0.6s" style="text-align:center">
+            <div class="section-title">
+                <h2>Your <strong>@ViewBag.Name</strong> Setting</h2>
+                <p class="text-success">@ViewBag.StatusMessage</p>
+
+            </div>
+        </div>
+
+        <div class="wow fadeInUp col-md-10 col-sm-10" data-wow-delay="0.9s">
+
+
+            <!-- tab panes -->
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="fday">
+                    <!-- divider -->
+                    <div class="program-divider col-md-12 col-sm-12"></div>
+                    <!-- display here -->
+                    <div class="col-md-2 col-sm-2">
+                        <img src="~/ProfileImage/p1.jpg" class="img-responsive" alt="program">
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+
+                        <h3>Manage Password</h3>
+
+                        @if (Model.HasPassword)
+        {
+
+                <a href="@Url.Action("ChangePassword")" class="btn btn-info btn-success">Change  password</a>
+}
+else
+{
+                <a href="@Url.Action("SetPassword")" class="btn btn-info btn-success">Create</a>
+}
+
+                    </div>
+
+                    <!-- divider -->
+                    <div class="program-divider col-md-12 col-sm-12"></div>
+
+                    <!-- function here -->
+                    <div class="col-md-2 col-sm-2">
+                        <img src="~/ProfileImage/@ViewBag.profile" class="img-responsive" alt="program">
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+
+                        <h3>My Profile</h3>
+                        <a href="@Url.Action("UpdateProfile","Manage")" class="btn btn-info btn-success">Update Profile</a>
+                    </div>
+
+
+                    <!-- divider -->
+                    <div class="program-divider col-md-12 col-sm-12"></div>
+
+                    <!-- function here -->
+                    <div class="col-md-2 col-sm-2">
+                        <img src="~/ProfileImage/p4.png" class="img-responsive" alt="program">
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+
+                        <h3>
+                            Phone Number
+                            <br />@(Model.PhoneNumber ?? "None")
+                        </h3>
+
+                        @if (Model.PhoneNumber != null)
+        {
+
+                <a href="@Url.Action("AddPhoneNumber")" class="btn btn-info btn-success">Change</a>
+
+                @: &nbsp;&nbsp;
+
+
+}
+else
+{
+                <a href="@Url.Action("AddPhoneNumber")" class="btn btn-info btn-success">Add</a>
+
+}
+
+                    </div>
+                    <!-- divider -->
+                    <div class="program-divider col-md-12 col-sm-12"></div>
+
+                    <!-- function here -->
+                    <div class="col-md-2 col-sm-2">
+                        <img src="~/ProfileImage/p5.jpg" class="img-responsive" alt="program">
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+
+                        <h3>Two-Factor Authentication</h3>
+                        @if (Model.TwoFactor)
+        {
+            using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <text>Enabled
+                    <input type="submit" value="Disable" class="btnbtn-info btn-success" />
+                </text>
+}
+}
+else
+{
+using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+                @Html.AntiForgeryToken()
+                <text>Disabled
+                    <input type="submit" value="Enable" class="btn btn-info btn-success" />
+                </text>
+}
+}
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <
+</section>
+

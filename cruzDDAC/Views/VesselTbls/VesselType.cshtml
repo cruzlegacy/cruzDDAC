@@ -1,0 +1,103 @@
+﻿@model IEnumerable<cruzDDAC.Models.VesselTbl>
+
+@{
+    ViewBag.Title = "VesselType";
+}
+
+
+
+<input id="Vessel_ScheduleID" hidden readonly value="@ViewBag.Vessel_ScheduleID" type="text" name="Vessel_ScheduleID" />
+<section class="parallax-section">
+    <div class="container">
+        <div class="row">
+
+            <div class="wow bounceIn col-md-12 col-sm-12">
+                <div class="section-title" style="text-align:center">
+                    <h1 class=" label-primary"><strong>Select Vessel For @ViewBag.Route </strong></h1>
+                    <h2 class=" label-danger"><strong>Space Remaining: @ViewBag.Remaining </strong></h2>
+                </div>
+            </div>
+
+            <div class="wow fadeInUp col-md-6 col-sm-6 col-xs-6" data-wow-delay="0.3s">
+                <h2 class="label-info" style="text-align:center"> Small Vessel</h2>
+
+
+
+                <img src="~/Content/images/VesselA.jpg" style="height:50px;width:100px;" />
+
+
+                <h4>
+                    Vessel Type: A
+                    <br />
+
+                    Total Allowed Space: 10
+
+                </h4>
+
+                <a href="@Url.Action("Create", "VesselTbls", new { @a = ViewBag.Vessel_ScheduleID, @b = "A"})" class="btn btn-info btn-default">Select</a>
+
+                <br />
+                <hr>
+
+                <img src="~/Content/images/VesselB.jpg" style="height:50px;width:100px;" />
+
+
+                <h4>
+                    Vessel Type: B
+                    <br />
+
+                    Total Allowed Space: 40
+
+                </h4>
+
+                <a href="@Url.Action("Create", "VesselTbls", new { @a = ViewBag.Vessel_ScheduleID, @b = "B"})" class="btn btn-info btn-default">Select</a>
+
+                <br />
+
+            </div>
+
+            <div class="wow fadeInUp col-md-6 col-sm-6 col-xs-6" data-wow-delay="0.6s">
+                <h2 class="label-success" style="text-align:center"> Large Vessel </h2>
+
+                <img src="~/Content/images/VesselC.png" style="height:50px;width:100px;" />
+
+
+                <h4>
+                    Vessel Type: C
+                    <br />
+
+                    Total Allowed Space: 80
+
+                </h4>
+
+                <a href="@Url.Action("Create", "VesselTbls", new { @a = ViewBag.Vessel_ScheduleID, @b = "C"})" class="btn btn-info btn-default">Select</a>
+
+                <br />
+                <hr>
+
+                <img src="~/Content/images/VesselD.jpg" style="height:50px;width:100px;" />
+
+
+                <h4>
+                    Vessel Type: D
+                    <br />
+
+                    Total Allowed Space: 120
+
+                </h4>
+
+                <a href="@Url.Action("Create", "VesselTbls", new { @a = ViewBag.Vessel_ScheduleID, @b = "D"})" class="btn btn-info btn-default">Select</a>
+
+                <br />
+                <hr>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+
+
+

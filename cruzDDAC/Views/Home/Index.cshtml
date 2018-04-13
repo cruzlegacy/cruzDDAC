@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+    $(document).ready(function () {
+
+        $(function () { $('audio').audioPlayer(); });
+    });
+
+</script>
+
+
+
+<div class="panel panel-info" style="text-align:center">
+    <div class="panel-heading">Let's have some energy startup</div>
+    <div class="panel-body">
+        <div class="audio-box">
+            <h4>Music by</h4>
+            <strong>The Fat Rat</strong>
+            <audio preload="auto" controls>
+                <source src="~/Content/TheFatRat - Unity.mp3">
+                <source src="~/Content/TheFatRat - Unity.ogg">
+                <source src="~/Content/TheFatRat - Unity.wav">
+            </audio>
+        </div><!-- Audio Box -->
+    </div>
+</div>
+
+
+
+<div id="d2">
+
+    <section id="detail" class="parallax-section">
+        <div class="container">
+            <div class="row">
+
+                <div class="wow fadeInLeft col-md-4 col-sm-4" data-wow-delay="0.3s">
+                    <i class="fa fa-group"></i>
+                    <h3>Trusted Shipping</h3>
+                    <p>Shipping Your Goods</p>
+                </div>
+
+                <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
+                    <i class="fa fa-clock-o"></i>
+                    <h3>Timely Arrival</h3>
+                    <p>Accurate Estimated Time of Arrival</p>
+                </div>
+
+                <div class="wow fadeInRight col-md-4 col-sm-4" data-wow-delay="0.9s">
+                    <i class="fa fa-group"></i>
+                    <h3>Globalwide Agents</h3>
+                    <p>Used our system to register Goods</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="speakers" class="parallax-section">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12 wow bounceIn">
+                    <div class="section-title">
+                        <h2>Contributors to this Project</h2>
+                        <p>From Asia Pacific University</p>
+                    </div>
+                </div>
+
+                <div id="owl-speakers" class="owl-carousel" style="text-align:center">
+                    <div class="item wow fadeInUp col-md-3 col-sm-3" data-wow-delay="0.3s">
+
+                    </div>
+                    <div class="item wow fadeInUp col-md-3 col-sm-3" data-wow-delay="0.3s">
+                        <div class="speakers-wrapper">
+                            <img src="~/Content/images/male.jpg" class="img-responsive" alt="speakers">
+                            <div class="speakers-thumb">
+                                <h3>Chua Chin Hong</h3>
+                                <h6>System Developer</h6>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="item wow fadeInUp col-md-3 col-sm-3" data-wow-delay="0.6s">
+                        <div class="speakers-wrapper">
+                            <img src="~/Content/images/male.jpg" class="img-responsive" alt="speakers">
+                            <div class="speakers-thumb">
+                                <h3>Dr. Kalai Anand Ratnam</h3>
+                                <h6>DDAC Lecturer</h6>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+</div>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<cruzDDAC.Models.VesselTbl>
+
+@{
+    ViewBag.Title = "VesselBooking";
+}
+
+<h2 class="jumbotron" style="text-align:center;background-color:aquamarine;color:darkorchid">Booking Notification</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduleTbl.Sailing_Route)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vessel_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerTbl.Customer_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduleTbl.Sailing_DepartureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vessel_Approval)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleTbl.Sailing_Route)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vessel_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerTbl.Customer_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleTbl.Sailing_DepartureDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vessel_Approval)
+            </td>
+            <td>
+            
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<cruzDDAC.Models.ScheduleTbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h1 class="jumbotron label-primary" style="text-align:center;background-color:aquamarine;color:darkorchid">Schedule</h1>
+<style>
+    body {
+        font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 160px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+        .sidenav a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+
+            .sidenav a:hover {
+                color: #f1f1f1;
+            }
+
+    .main {
+        margin-left: 160px; /* Same as the width of the sidenav */
+        font-size: 28px; /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+</style>
+
+<div class="sidenav">
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="navbar-left" style="margin-top:8px;text-align:center; margin-bottom:10px">
+        @using (Html.BeginForm("Index", "ScheduleTbls", FormMethod.Get))
+        {
+            <ul class="nav navbar-nav col-md-3">
+                <li>@Html.TextBox("SearchString") </li>
+
+                <li> <button type="submit" class="btn btn-success" style="width: 160px;"> Search </button></li>
+            </ul>
+        }
+    </div>
+    <br />
+    @Html.ActionLink("Schedule", "Index", "ScheduleTbls")
+    @Html.ActionLink("Create", "Create", "ScheduleTbls")
+</div>
+
+
+<div class="main" style="font-size:95%">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sailing_Route)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sailing_Destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sailing_DepartureDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sailing_ArrivalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Space_Available)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sailing_Route)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sailing_Destination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sailing_DepartureDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sailing_ArrivalDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Space_Available)
+                </td>
+        
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.Schedule_ID  })" class="btn btn-warning btn-default"> Edit </a>
+                    <a href="@Url.Action("Delete", new { id = item.Schedule_ID  })" class="btn btn-danger btn-default"> Delete </a>
+                 
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

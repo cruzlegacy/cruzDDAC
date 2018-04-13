@@ -1,0 +1,50 @@
+﻿@model cruzDDAC.Models.VesselTbl
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class=" label-primary" style="text-align:center">Select the Customer Reserving for the Vessel</h2>
+<h3 class="label-success" style="text-align:center">All the Items from the Customer will be registered to this Vessel</h3>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+  
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <input id="Vessel_ScheduleID" hidden readonly value="@ViewBag.Vessel_ScheduleID" type="text" name="Vessel_ScheduleID" />
+    <input id="Vessel_Type" hidden readonly value="@ViewBag.Vessel_VesselType" type="text" name="Vessel_Type" />
+    <input id="Vessel_Size" hidden readonly value="@ViewBag.RemainingSpace" type="text" name="Vessel_Size" />
+    <input id="Vessel_Approval" hidden readonly value="Pending" type="text" name="Vessel_Approval" />
+    <input id="Vessel_Agent" hidden readonly value="@User.Identity.Name" type="text" name="Vessel_Agent" />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vessel_Customer, "Vessel Customer", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            @Html.DropDownList("Vessel_Customer", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Vessel_Customer, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vessel_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Vessel_Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Vessel_Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Send for Approval" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    <a href="@Url.Action("VesselSchedule","ScheduleTbls")" class="btn btn-info btn-default">Cancel</a>
+</div>

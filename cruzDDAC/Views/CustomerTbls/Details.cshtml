@@ -1,0 +1,59 @@
+﻿@model cruzDDAC.Models.CustomerTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_IC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_IC)
+        </dd>
+
+     
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Vessel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Vessel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-info btn-default">Return</a>
+</p>

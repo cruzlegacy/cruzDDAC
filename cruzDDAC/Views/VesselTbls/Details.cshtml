@@ -1,0 +1,58 @@
+﻿@model cruzDDAC.Models.VesselTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VesselTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vessel_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vessel_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vessel_Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vessel_Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vessel_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vessel_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vessel_Approval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vessel_Approval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleTbl.Sailing_Route)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleTbl.Sailing_Route)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Vessel_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

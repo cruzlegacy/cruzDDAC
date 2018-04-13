@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Main";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title> Container Management System </title>
+    <style>
+        .introbar {
+            linear-gradient: ( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) );
+            background: url(../../Content/images/mae1.jpg) 50% 0 repeat-y fixed;
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-position: center center;
+            color: #ffffff;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+            .introbar h3 {
+                letter-spacing: 2px;
+            }
+    </style>
+
+    @Styles.Render("~/Content/css")
+
+</head>
+
+<body data-spy="scroll" data-offset="50" data-target=".navbar-collapse">
+
+
+
+    <div class="preloader">
+
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+
+    </div>
+
+
+    <section class="introbar parallax-section">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12">
+                    <h3 class="wow bounceIn" data-wow-delay="0.9s" style=" font-size: 300%;">Container Management System</h3>
+                    <h1 class="wow fadeInUp" data-wow-delay="1.6s" style=" font-size: 200%;">Be Part of Us</h1>
+                    <div style="text-align:center;">
+                       
+                        <div class="col-md-4" style="margin-left:120px">
+                            <a href="@Url.Action("Index", "Home")" class="btn btn-lg btn-info smoothScroll wow fadeInUp hidden-xs" data-wow-delay="2.3s" style=""> <span class="fa fa-ship"></span> Explore More</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="@Url.Action("Register", "Account")" class="btn btn-lg btn-success smoothScroll wow fadeInUp " data-wow-delay="2.3s" style=""> <span class="fa fa-handshake-o"></span> Join Now</a>
+
+                        </div>
+                            
+                    </div>
+                    
+                    @*<div class="col-md-6">
+                            <a href="@Url.Action("Register", "Account")" class="btn btn-lg btn-success smoothScroll wow fadeInUp" data-wow-delay="2.3s"><span class="fa fa-handshake-o"></span>Agent Site</a>
+
+                        </div>*@
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+</body>
+</html>
+

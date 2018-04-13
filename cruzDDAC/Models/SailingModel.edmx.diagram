@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f221ea14b2bd4cddad33057458ac032a" Name="Diagram1">
+        <EntityTypeShape EntityType="DDACdbModel.ItemTbl" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DDACdbModel.SailingVesselTbl" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DDACdbModel.ScheduleTbl" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DDACdbModel.FK_SailingVesselTbl_ScheduleTbl" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DDACdbModel.CustomerTbl" Width="1.5" PointX="5.375" PointY="1" />
+        <AssociationConnector Association="DDACdbModel.FK_ItemTbl_CustomerTbl" />
+        <EntityTypeShape EntityType="DDACdbModel.VesselTbl" Width="1.5" PointX="7.625" PointY="0.75" />
+        <AssociationConnector Association="DDACdbModel.FK_CustomerTbl_VesselTbl" />
+        <AssociationConnector Association="DDACdbModel.FK_VesselTbl_CustomerTbl" />
+        <AssociationConnector Association="DDACdbModel.FK_ItemTbl_VesselTbl" />
+        <AssociationConnector Association="DDACdbModel.FK_SailingVesselTbl_VesselTbl" />
+        <AssociationConnector Association="DDACdbModel.FK_VesselTbl_ScheduleTbl" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

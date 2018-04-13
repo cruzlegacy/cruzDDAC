@@ -1,0 +1,107 @@
+﻿@model IEnumerable<cruzDDAC.Models.CustomerTbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<style>
+    body {
+        font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 160px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+        .sidenav a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+
+            .sidenav a:hover {
+                color: #f1f1f1;
+            }
+
+    .main {
+        margin-left: 160px; /* Same as the width of the sidenav */
+        font-size: 28px; /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+</style>
+
+<div class="sidenav">
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="navbar-left" style="margin-top:8px;text-align:center; margin-bottom:10px">
+        @using (Html.BeginForm("Index", "CustomerTbls", FormMethod.Get))
+        {
+            <ul class="nav navbar-nav col-md-3">
+                <li>@Html.TextBox("SearchString") </li>
+
+                <li> <button type="submit" class="btn btn-success" style="width: 160px;"> Search </button></li>
+            </ul>
+        }
+    </div>
+    <br />
+    @Html.ActionLink("Customer", "Index", "CustomerTbls")
+    @Html.ActionLink("Create", "Create", "CustomerTbls")
+</div>
+
+<div class="main" style="font-size:95%">
+    <h1 class="jumbotron label-primary" style="text-align:center;background-color:aquamarine;color:darkorchid">Customer Overview</h1>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer_IC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer_Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer_Vessel)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer_IC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer_Contact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer_Vessel)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.Customer_ID  })" class="btn btn-warning btn-default"> Edit </a>
+                    <a href="@Url.Action("Details", new { id = item.Customer_ID  })" class="btn btn-info btn-default"> Details </a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

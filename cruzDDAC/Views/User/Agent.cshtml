@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Agent";
+}
+
+<h1 class="jumbotron label-primary" style="text-align:center;background-color:aquamarine;color:darkorchid"> View Agent </h1>
+
+
+@model IEnumerable<cruzDDAC.Models.UserAgent>
+
+@{
+    ViewBag.Title = "GenerateReport";
+
+}
+
+
+@{int n = 0;}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+      
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        n = n + 1;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+     
+
+
+        </tr>
+    }
+    <tr>
+        <td>
+            Total Agents: @n
+        </td>
+    </tr>
+</table>
+
+
+@*<a href="@Url.Action("PrintReport")" target="_blank" class="btn btn-success btn-default">Print</a>
+<a href="@Url.Action("OrganizedEvent")" class="btn btn-danger btn-default">Cancel</a>*@
