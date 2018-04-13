@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using cruzDDAC.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using SendGrid;
+
 
 namespace cruzDDAC.Controllers
 {
@@ -64,7 +69,8 @@ namespace cruzDDAC.Controllers
             return View(vessel.ToList());
         }
 
-        public ActionResult Notify(int id, string status)
+      
+        public async Task<ActionResult> Notify(int id, string status)
         {
 
             var ves = db.VesselTbls.Find(id);
@@ -76,7 +82,49 @@ namespace cruzDDAC.Controllers
                     db.Entry(ves).State = EntityState.Modified;
                     db.SaveChanges();
                     TempData["notice"] = "This booking has Approved!";
-                    return RedirectToAction("VesselNotify", "VesselTbls");
+
+                  
+                    var myMessage = new SendGridMessage();
+                    myMessage.AddTo(ves.Vessel_Agent);
+                    myMessage.From = new System.Net.Mail.MailAddress(
+                                        "Cruzlegacy@gmail.com", "Cruz.");
+                    myMessage.Subject = "Approved" + " " + ves.Vessel_Name + " " + "Approval ";
+                    myMessage.Text = "";
+                    myMessage.Html = "Vessel Name: " + ves.Vessel_Name + "</br>" +
+                                      "Vessel Agent: " + ves.Vessel_Agent + "</br>" +
+                                      "Vessel Approval: " + ves.Vessel_Approval + "</br>" 
+                                      ;
+
+                    var credentials = new NetworkCredential(
+                               ConfigurationManager.AppSettings["mailAccount"],
+                               ConfigurationManager.AppSettings["mailPassword"]
+                               );
+
+                    // Create a Web transport for sending email.
+                    var transportWeb = new Web(credentials);
+
+                    // Send the email.
+                    if (transportWeb != null)
+                    {
+                        await transportWeb.DeliverAsync(myMessage);
+                    }
+                    else
+                    {
+                        Trace.TraceError("Failed to create Web transport.");
+                        await Task.FromResult(0);
+                    }
+                
+
+
+
+
+
+
+
+
+
+
+                return RedirectToAction("VesselNotify", "VesselTbls");
                 }
                 else
                 {
@@ -221,7 +269,7 @@ namespace cruzDDAC.Controllers
                 db.VesselTbls.Add(vesselTbl);
                 db.SaveChanges();
                 TempData["notice"] = "Your Booking has been sent to Admin for Approval";
-                return RedirectToAction("Index");
+                return RedirectToAction("VesselSchedule","ScheduleTbls");
             }
 
             ViewBag.Vessel_ScheduleID = new SelectList(db.ScheduleTbls, "Schedule_ID", "Sailing_Route", vesselTbl.Vessel_ScheduleID);
