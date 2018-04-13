@@ -138,10 +138,19 @@ namespace cruzDDAC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ScheduleTbl scheduleTbl = db.ScheduleTbls.Find(id);
+            try
+            {
+ScheduleTbl scheduleTbl = db.ScheduleTbls.Find(id);
             db.ScheduleTbls.Remove(scheduleTbl);
             db.SaveChanges();
             return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["notice"] = "This schedule has linked to a vessel id, cannot be deleted.";
+                return RedirectToAction("Index");
+            }
+            
         }
 
         protected override void Dispose(bool disposing)
